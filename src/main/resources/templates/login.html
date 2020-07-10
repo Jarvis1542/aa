@@ -1,5 +1,9 @@
-{{>layout/header}}
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
 아이디 : <input type="text" id="loginId"><br>
 비밀번호 : <input type="password" id="loginPassword"><br>
 <button id="login">로그인</button><button id="cancel">취소</button>
-{{>layout/footer}}
+</body>
+</html>
