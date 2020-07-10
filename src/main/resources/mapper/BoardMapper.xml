@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.a.aa.mapper.BoardMapper">
+        <insert id="write">
+            insert into p_board values(
+                p_board_seq.nextval,
+                #{title},
+                #{content},
+                #{writer},
+                sysdate,
+                0,
+                0,
+                0,
+                0,
+                #{mbo}
+            )
+        </insert>
+
+        <select id="boardList" resultType="com.a.aa.domain.BoardListDTO">
+            select mbo, bno, title, writer, regDate, noCount, exCount, rxReco , noReco
+            from p_board_view
+        </select>
+
+        <select id="select" resultType="com.a.aa.domain.SelectDTO">
+            select mbo, bno, title, writer, regDate, content, noCount, exCount, rxReco , noReco
+            from p_board_view
+            where bno = #{bno}
+        </select>
+
+        <update id="noCount">
+            update p_board_view
+            set noCount = noCount + 1
+            where bno = #{bno}
+        </update>
+
+    <update id="exCount">
+            update p_board_view
+            set exCount = exCount + 1
+            where bno = #{bno}
+        </update>
+
+
+    <update id="rxReco">
+            update p_board_view
+            set rxReco = rxReco + 1
+            where bno = #{bno}
+        </update>
+
+    <update id="noReco">
+            update p_board_view
+            set noReco = noReco + 1
+            where bno = #{bno}
+        </update>
+
+
+    <update id="update">
+            update p_board_view
+            set title = #{title} , writer = #{writer} , content = #{content}
+            where bno = #{bno}
+        </update>
+
+
+    <delete id="delete">
+        delete
+        from p_board_view
+        where bno = #{bno}
+        </delete>
+
+    <insert id="reply">
+            insert into p_reply_view values(
+                p_reply_seq.nextval,
+                #{rcontent},
+                #{rwriter},
+                sysdate,
+                #{bno},
+                #{mbo}
+            )
+        </insert>
+
+    <select id="replyList" resultType="com.a.aa.domain.ReplyListDTO">
+            select bno, rcontent, rwriter, rregDate, bno, mbo
+            from p_reply_view
+            where bno = #{bno}
+        </select>
+</mapper>
+
+<!-- #은 매개변수이다.-->

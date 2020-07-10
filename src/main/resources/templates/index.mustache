@@ -1,0 +1,57 @@
+{{>layout/header}}
+<hr>
+<button id="writeBtn">글쓰기</button>
+<h2>회원 목록</h2>
+<table style="text-align: center; border: 1px red solid"  >
+    <thead>
+        <tr>
+            <th>회원번호</th>
+            <th>아이디</th>
+            <th>이름</th>
+            <th>등록날짜</th>
+            <th>유형</th>
+        </tr>
+    </thead>
+    <tbody>
+    {{#memberList}}
+    <tr>
+        <th>{{mbo}}</th>
+        <th>{{id}}</th>
+        <th>{{name}}</th>
+        <th>{{regDate}}</th>
+        <th>{{type}}</th>
+    </tr>
+    {{/memberList}}
+    </tbody>
+</table>
+<hr>
+<h2>글 목록</h2>
+<table style="text-align: center;">
+    <thead>
+    <tr>
+        <th>글번호</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>작성일</th>
+        <th>일반조회</th>
+        <th>전문가조회</th>
+        <th>전문가추천수</th>
+        <th>일반인추천수</th>
+    </tr>
+    </thead>
+    <tbody>
+    {{#boardList}}
+        <tr>
+            <th>{{bno}}</th>
+            <th><a href="/select/{{bno}}">{{title}}</a></th>
+            <th>{{writer}}</th>
+            <th>{{regDate}}</th>
+            <th>{{noCount}}</th>
+            <th>{{exCount}}</th>
+            <th>{{rxReco}}</th>
+            <th>{{noReco}}</th>
+        </tr>
+    {{/boardList}}
+    </tbody>
+</table>
+{{>layout/footer}}

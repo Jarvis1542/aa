@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+    <head th:fragment="head">
+        <link rel="stylesheet" th:href="@{main.css}">
+        <meta charset="UTF-8">
+        <title>board</title>
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/js/index.js"></script>
+    </head>
+    <body>
+        <header th:fragment="header">
+            <div th:unless="${session.user}==null">
+                <h2><span th:text="${session.user.name}"/>님</h2>
+                회원번호 : <span th:text="${session.user.mbo}"></span>&emsp13;&emsp13;&emsp13;
+                회원이름 : <span th:text="${session.user.name}"></span>&emsp13;&emsp13;&emsp13;
+                회원유형 : <span th:text="${session.user.type}"></span>&emsp13;&emsp13;&emsp13;
+                <button id="logout">로그아웃</button>
+            </div>
+            <div th:if="${session.user}==null">
+                <button id="joinBtn">회원가입</button>
+                <button id="loginBtn">로그인</button>
+            </div>
+        </header>
+        <section th:fragment="content">
+            content
+        </section>
+        <footer th:fragment="footer">
+            footer
+        </footer>
+    </body>
+</html>
