@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class LoginDTO {
-    private long mbo;
+    private long mno;
     private String id;
     private String password;
-    private String type;
+    private String role;
     private String name;
 }

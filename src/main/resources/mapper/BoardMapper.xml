@@ -12,17 +12,17 @@
                 0,
                 0,
                 0,
-                #{mbo}
+                #{mno}
             )
         </insert>
 
         <select id="boardList" resultType="com.a.aa.domain.BoardListDTO">
-            select mbo, bno, title, writer, regDate, noCount, exCount, rxReco , noReco
+            select mno, bno, title, writer, regDate, noCount, exCount, rxReco , noReco
             from p_board_view
         </select>
 
         <select id="select" resultType="com.a.aa.domain.SelectDTO">
-            select mbo, bno, title, writer, regDate, content, noCount, exCount, rxReco , noReco
+            select mno, bno, title, writer, regDate, content, noCount, exCount, rxReco , noReco
             from p_board_view
             where bno = #{bno}
         </select>
@@ -73,12 +73,12 @@
                 #{rwriter},
                 sysdate,
                 #{bno},
-                #{mbo}
+                #{mno}
             )
         </insert>
 
     <select id="replyList" resultType="com.a.aa.domain.ReplyListDTO">
-            select bno, rcontent, rwriter, rregDate, bno, mbo
+            select rno, rcontent, rwriter, rregDate, bno, mno
             from p_reply_view
             where bno = #{bno}
         </select>

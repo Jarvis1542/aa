@@ -7,5 +7,5 @@ public class JoinDTO {
     private String id;
     private String password;
     private String name;
-    private String type;
+    private String role;
 }

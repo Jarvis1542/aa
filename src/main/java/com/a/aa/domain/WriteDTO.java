@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class WriteDTO {
-    private long mbo;
+    private long mno;
     private String title;
     private String writer;
     private String content;

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"/>
+<div th:each="update : ${update}">
+    <input type="hidden" id="bno" th:value="${update.bno}">
+    제목 : <input type="text" id="title" th:value="${update.title}"><br>
+    작성자 : <input type="text" id="writer" th:value="${update.writer}"><br>
+    내용 : <textarea id="content"><th:block th:text="${update.content}"/></textarea><br>
+</div>
+<button id="update">글수정</button>
+<button id="delete">삭제</button>
+<button id="cancel">취소</button>
+<footer th:replace="layout/layout :: footer"/>
+</body>
+</html>

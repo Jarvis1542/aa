@@ -11,14 +11,15 @@
         <header th:fragment="header">
             <div th:unless="${session.user}==null">
                 <h2><span th:text="${session.user.name}"/>님</h2>
-                회원번호 : <span th:text="${session.user.mbo}"></span>&emsp13;&emsp13;&emsp13;
-                회원이름 : <span th:text="${session.user.name}"></span>&emsp13;&emsp13;&emsp13;
-                회원유형 : <span th:text="${session.user.type}"></span>&emsp13;&emsp13;&emsp13;
-                <button id="logout">로그아웃</button>
+                회원번호 : <span id="mbo" th:value="${session.user.mno}" th:text="${session.user.mno}"></span>&emsp13;&emsp13;&emsp13;
+                회원이름 : <span id="name" th:value="${session.user.name}" th:text="${session.user.name}"></span>&emsp13;&emsp13;&emsp13;
+                회원유형 : <span id="type" th:value="${session.user.role}" th:text="${session.user.role}"></span>&emsp13;&emsp13;&emsp13;
+                <a href="/logout">로그아웃</a>
             </div>
             <div th:if="${session.user}==null">
                 <button id="joinBtn">회원가입</button>
-                <button id="loginBtn">로그인</button>
+                <a href="/login">로그인</a>
+                <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">구글 로그인</a>
             </div>
         </header>
         <section th:fragment="content">

@@ -5,5 +5,7 @@ import lombok.Data;
 @Data
 public class RecoDTO {
     private long bno;
-    private String type;
+    private String role;
+    private String mno;
+    private String name;
 }

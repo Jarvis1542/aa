@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"/>
+제목 : <input type="text" id="title"><br>
+작성자 : <input th:type="text" id="writer" th:value="${session.user.name}"><br>
+내용 : <textarea id="content"></textarea><br>
+<button id="write">글작성</button><button id="cancel">취소</button>
+<footer th:replace="layout/layout :: footer"/>
+</body>
+</html>

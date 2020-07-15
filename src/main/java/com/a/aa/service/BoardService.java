@@ -29,9 +29,9 @@ public class BoardService {
 
     //추천기능
     public void reco(RecoDTO recoDTO) {
-        if(recoDTO.getType().equals("True")){
+        if(recoDTO.getRole().equals("True")){
             boardMapper.rxReco(recoDTO);
-        }else if(recoDTO.getType().equals("False")){
+        }else if(recoDTO.getRole().equals("False")){
             boardMapper.noReco(recoDTO);
         }
     }

@@ -3,24 +3,24 @@
     <mapper namespace="com.a.aa.mapper.MemberMapper">
 
         <insert id="join">
-            insert into p_memberr values(
-                p_memberr_seq.nextval,
+            insert into p_user values(
+                p_user_seq.nextval,
                 #{id},
                 #{password},
                 #{name},
                 sysdate,
-                #{type}
+                #{role}
             )
         </insert>
 
         <select id="memberList" resultType="com.a.aa.domain.MemberListDTO">
-            select mbo, id, name, regDate, type
-            from p_memberr_view
-            order by mbo
+            select mno, id, name, created_date, role
+            from p_user_view
+            order by mno
         </select>
 
         <select id="login" resultType="com.a.aa.domain.LoginDTO">
-            select mbo, id, name, type from p_memberr_view
+            select mno, id, name, type from p_user_view
             where id = #{id} and password = #{password}
         </select>
 </mapper>

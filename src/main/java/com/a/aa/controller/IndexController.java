@@ -1,5 +1,6 @@
 package com.a.aa.controller;
 
+import com.a.aa.config.auth.dto.SessionUser;
 import com.a.aa.domain.JoinDTO;
 import com.a.aa.domain.LoginDTO;
 import com.a.aa.domain.RecoDTO;
@@ -23,11 +24,14 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession httpSession){
-        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         model.addAttribute("member", httpSession.getAttribute("user"));
         model.addAttribute("memberList", memberService.memberList());
         model.addAttribute("boardList", boardService.boardList());
-        return "index2";
+        SessionUser user = (SessionUser) httpSession.getAttribute("user");
+        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        if(user != null)
+            model.addAttribute("userName", user.getName());
+        return "index";
     }
 
     @GetMapping("/join")
@@ -70,18 +74,19 @@ public class IndexController {
     public String select(@PathVariable long bno, Model model, HttpSession httpSession){
         model.addAttribute("member", httpSession.getAttribute("user"));
         model.addAttribute("select", boardService.select(bno));
+        System.out.println("댓글리스트 : " + boardService.replyList(bno));
         model.addAttribute("replyList", boardService.replyList(bno));
         LoginDTO loginDTO = (LoginDTO)httpSession.getAttribute("user");
         String a = httpSession.getAttribute("user").toString();
         System.out.println("세션에 담긴 쓰레기 같은 정보2 : " + a);
-        if(loginDTO.getType().equals("False")) {
+        if(loginDTO.getRole().equals("False")) {
             boardService.noCount(bno);
         } else {
             boardService.exCount(bno);
         }
 
         System.out.println("세션에 담긴 쓰레기 같은 정보 : " + httpSession.getAttribute("user"));
-        return "/select";
+        return "select";
     }
 
     @GetMapping("/update/{bno}")

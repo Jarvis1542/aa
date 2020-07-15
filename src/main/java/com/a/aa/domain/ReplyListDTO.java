@@ -11,5 +11,5 @@ public class ReplyListDTO {
     private String rwriter;
     private Date rregDate;
     private long bno;
-    private long mbo;
+    private long mno;
 }

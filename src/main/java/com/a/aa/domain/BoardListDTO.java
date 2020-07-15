@@ -6,7 +6,7 @@ import java.util.Date;
 
 @Data
 public class BoardListDTO {
-    private long mbo;
+    private long mno;
     private long bno;
     private String title;
     private String writer;

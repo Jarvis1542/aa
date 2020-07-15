@@ -15,5 +15,4 @@ public class SelectDTO {
     private int exCount;
     private int rxReco;
     private int noReco;
-
 }

@@ -6,9 +6,9 @@ import java.util.Date;
 
 @Data
 public class MemberListDTO {
-    private long mbo;
+    private long mno;
     private String id;
     private String name;
-    private Date regDate;
-    private String type;
+    private Date created_date;
+    private String role;
 }

@@ -19,11 +19,11 @@
     </thead>
     <tbody>
     <tr th:each="memberList : ${memberList}">
-        <th><span th:text="${memberList.mbo}"/></th>
+        <th><span th:text="${memberList.mno}"/></th>
         <th><span th:text="${memberList.id}"/></th>
         <th><span th:text="${memberList.name}"/></th>
-        <th><span th:text="${#dates.format(memberList.regDate, 'YYYY-MM-dd HH:mm:ss')}"/></th>
-        <th><span th:text="${memberList.type}"/></th>
+        <th><span th:text="${#dates.format(memberList.created_date, 'YYYY-MM-dd HH:mm:ss')}"/></th>
+        <th><span th:text="${memberList.role}"/></th>
     </tr>
     </tbody>
 </table>
@@ -46,7 +46,7 @@
     <tbody>
     <tr th:each="boardList : ${boardList}">
         <th><span th:text="${boardList.bno}"/></th>
-        <th><a th:href="@{'/select' + ${boardList.bno}}"><span th:text="${boardList.title}"/></a></th>
+        <th><a th:href="@{'/select/' + ${boardList.bno}}"><span th:text="${boardList.title}"/></a></th>
         <th><span th:text="${boardList.writer}"/></th>
         <th><span th:text="${#dates.format(boardList.regDate, 'YYYY-MM-dd HH:mm:ss')}"/></th>
         <th><span th:text="${boardList.noCount}"/></th>

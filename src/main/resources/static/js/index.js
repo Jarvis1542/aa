@@ -31,7 +31,7 @@ $(document).ready(function () {
             id : $('#id').val(),
             password : $('#password').val(),
             name : $('#name').val(),
-            type : $('#type').val()
+            role : $('#type').val()
         };
 
         $.ajax({
@@ -65,6 +65,8 @@ $(document).ready(function () {
     });
 
     $('#update').click(function () {
+        var bno = $('#bno').val();
+
         var data = {
             bno : $('#bno').val(),
             title : $('#title').val(),
@@ -78,7 +80,7 @@ $(document).ready(function () {
             data : data
         }).done(function () {
             alert('수정 완료');
-            window.location.href='/';
+            window.location.href='/select/'+bno;
         }).fail(function (error) {
             alert(error);
         });
@@ -91,7 +93,7 @@ $(document).ready(function () {
             bno : $('#bno').val(),
             rwriter : $('#rwriter').val(),
             rcontent : $('#rcontent').val(),
-            mbo : $('#mno').val()
+            mbo : $('#mbo').text()
         };
 
         $.ajax({
@@ -125,9 +127,13 @@ $(document).ready(function () {
     });
 
     $('#reco').click(function () {
+        var a = $('#type').text();
+        alert("추천 타입 : " + a);
         var data = {
             bno : $('#bno').val(),
-            type: $('#mtype').val(),
+            type: $('#type').text(),
+            mbo : $('#mbo').text(),
+            name : $('#name').text()
         };
 
         $.ajax({
@@ -147,7 +153,7 @@ $(document).ready(function () {
             title : $('#title').val(),
             writer : $('#writer').val(),
             content : $('#content').val(),
-            mbo : $('#mno').val()
+            mbo : $('#mbo').text()
         };
 
         $.ajax({
