@@ -12,7 +12,7 @@ $(document).ready(function () {
     });
 
     $('#loginBtn').click(function () {
-        window.location.href='/login';
+        window.location.href='/user/login';
     });
 
     $('#writeBtn').click(function () {
@@ -60,7 +60,7 @@ $(document).ready(function () {
             alert('로그인 완료');
             window.location.href='/';
         }).fail(function (error) {
-            alert(error);
+            alert(JSON.stringify(error));
         });
     });
 

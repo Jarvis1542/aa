@@ -4,23 +4,26 @@
 
         <insert id="join">
             insert into p_user values(
-                p_user_seq.nextval,
-                #{id},
-                #{password},
-                #{name},
+                p_memberr_seq.nextval,
                 sysdate,
+                sysdate,
+                null,
+                #{id},
+                #{name},
+                #{password},
+                null,
                 #{role}
             )
         </insert>
 
         <select id="memberList" resultType="com.a.aa.domain.MemberListDTO">
-            select mno, id, name, created_date, role
+            select mno, id, name, created_date, email, role
             from p_user_view
             order by mno
         </select>
 
         <select id="login" resultType="com.a.aa.domain.LoginDTO">
-            select mno, id, name, type from p_user_view
+            select mno, id, name, role from p_user_view
             where id = #{id} and password = #{password}
         </select>
 </mapper>

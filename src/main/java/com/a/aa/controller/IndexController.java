@@ -4,6 +4,7 @@ import com.a.aa.config.auth.dto.SessionUser;
 import com.a.aa.domain.JoinDTO;
 import com.a.aa.domain.LoginDTO;
 import com.a.aa.domain.RecoDTO;
+import com.a.aa.domain.user.P_user;
 import com.a.aa.service.BoardService;
 import com.a.aa.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 @Controller
@@ -24,11 +26,11 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model, HttpSession httpSession){
-        model.addAttribute("member", httpSession.getAttribute("user"));
         model.addAttribute("memberList", memberService.memberList());
         model.addAttribute("boardList", boardService.boardList());
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
-        System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
+        //System.out.println("회원가입 세션 정보 : " + httpSession.getAttribute("joinUser"));
+        System.out.println("소셜 세션 정보 : " + httpSession.getAttribute("user"));
         if(user != null)
             model.addAttribute("userName", user.getName());
         return "index";
@@ -41,7 +43,7 @@ public class IndexController {
         return "join";
     }
 
-    @GetMapping("/login")
+    @GetMapping("/user/login")
     public String loginPage(Model model, HttpSession httpSession){
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         model.addAttribute("member", httpSession.getAttribute("user"));
@@ -51,7 +53,8 @@ public class IndexController {
     @PostMapping("/rest/login")
     public String login(LoginDTO loginDTO, HttpSession httpSession, Model model){
         System.out.println("login Controller : " + memberService.login(loginDTO));
-        httpSession.setAttribute("user", memberService.login(loginDTO));
+        SessionUser user = new SessionUser(memberService.login(loginDTO));
+        httpSession.setAttribute("user", user);
         model.addAttribute("member", httpSession.getAttribute("user"));
         System.out.println("세션 정보 : " + httpSession.getAttribute("user"));
         return "redirect:/";

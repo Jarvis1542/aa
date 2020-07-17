@@ -60,7 +60,7 @@ public class OAuthAttributes {
                 .name(name)
                 .email(email)
                 .picture(picture)
-                .role(Role.NOMAL) // 가입할때 기본 권한을 GUEST로 주기 위해서 role 빌더값에 Role.GUEST를 사용
+                .role(Role.일반) // 가입할때 기본 권한을 GUEST로 주기 위해서 role 빌더값에 Role.GUEST를 사용
                 .build();
     }
 }

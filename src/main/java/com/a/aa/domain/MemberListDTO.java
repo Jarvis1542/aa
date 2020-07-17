@@ -10,5 +10,6 @@ public class MemberListDTO {
     private String id;
     private String name;
     private Date created_date;
+    private String email;
     private String role;
 }
